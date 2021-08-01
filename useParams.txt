@@ -1,0 +1,45 @@
+//App.js
+import React from'react';
+import { Route,Switch } from 'react-router-dom';
+import About  from './About';
+import Contact from './Contact';
+import Error from './Error';
+import Menu from './Menu';
+import User from './User';
+const App= ()=>{
+    const Name=()=>{
+        return <h1> This is the Name Page</h1>
+    }
+return (<>
+<Menu/>
+<Switch>
+    <Route exact path='/' component={About} />
+    <Route exact path='/contact' component={Contact}  /> 
+    <Route exact path='/contact/name' component={Name}  />
+    <Route exact path='/user/:name/:lname' component={User}  /> 
+    <Route component={Error}/>
+
+</Switch>
+</>);
+}
+export default App;
+//Menu.jsx
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+const Menu = ()=>{
+return (<>
+    <NavLink activeClassName='active_class' exact to='/' > About Us </NavLink>   
+    <NavLink activeClassName="active_class" exact to='/contact' >Contact Us</NavLink>
+    <NavLink activeClassName="active_class" exact to='/user/rani/dimbar' >User</NavLink>
+    </>
+);
+}
+export default Menu;
+//User.jsx
+import React from 'react';
+import { useParams } from 'react-router-dom';
+const User =()=>{
+    let {name,lname}= useParams();
+    return <h1>This is User {name} {lname} Page</h1>
+}
+export default User;

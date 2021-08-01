@@ -1,0 +1,14 @@
+Another Code similar to Use Params
+//User.jsx
+import React from 'react';
+import { useParams ,useLocation} from 'react-router-dom';
+const User =()=>{
+    let {name,lname}= useParams();
+    const location= useLocation();
+    return <>
+    <h1>This is User {name} {lname} Page</h1>
+    <p>Your Current Location Path is {location.pathname}</p>
+    {location.pathname === `/user/rani/dimbar` ? (<button onClick={()=> {alert('You Are Awesome')}}>Cllick Me</button>):null}
+    </>
+}
+export default User;
